@@ -130,7 +130,7 @@ export const ContactList = (props) => {
     //  const updatedData =
     setContacts(
       contacts.map((data) => {
-        return data.id === id ? { id, ...response } : data;
+        return data.id === id ? { id, ...update } : data;
       })
     );
 
