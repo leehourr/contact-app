@@ -28,6 +28,7 @@ export const AddContact = async (contact) => {
 };
 
 export const updateContact = async (id, contact) => {
+  //console.log(id+ "id");
   const response = await api.put(`/contacts/${id}.json`, contact).catch((e) => {
     errorHandler(e);
   });

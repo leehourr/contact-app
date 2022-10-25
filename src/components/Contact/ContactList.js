@@ -21,7 +21,7 @@ export const ContactList = (props) => {
   const getContacts = useCallback(async () => {
     setIsLoading(true);
     const data = await getAllContacts();
-    console.log(data);
+    // console.log(data);
     const contact = [];
     for (const key in data) {
       contact.push({
@@ -30,7 +30,7 @@ export const ContactList = (props) => {
         number: data[key].number,
       });
     }
-    console.log(contact);
+    // console.log(contact);
     setContacts(contact);
     // console.log(contact);
 
@@ -89,9 +89,8 @@ export const ContactList = (props) => {
 
   const addContactHandler = async (name, number) => {
     console.log(name, number);
-    const namespace = "1b671a64-40d5-491e-99b0-da01ff1f3341";
+
     const data = {
-      id: uuidv5(number, namespace),
       name,
       number,
     };
@@ -124,17 +123,17 @@ export const ContactList = (props) => {
     }
     // console.log(update);
     const response = await updateContact(id, update);
-    const { id: uid } = response;
+    console.log("updated");
+    console.log(response);
     const updatedData = contacts.map((data) => {
-      return data.id === uid ? { ...response } : data;
+      return data.id === id ? { ...response } : data;
     });
     setContacts(updatedData);
     ///  console.log(response);
   };
 
-  if (contacts.length > 0) {
+  if (contacts.length > 0 && contacts !== []) {
     content = contacts.map((data) => {
-      //console.log(data.id + " data");
       return (
         <Contact
           key={data.id}
@@ -150,8 +149,8 @@ export const ContactList = (props) => {
 
   const validateInput = (name, number) => {
     if (
-      name.trim().length <= 5 ||
-      number.trim().length <= 10 ||
+      name.trim().length <= 1 ||
+      number.trim().length <= 7 ||
       name === "" ||
       number === ""
     ) {
