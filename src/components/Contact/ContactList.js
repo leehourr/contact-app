@@ -20,7 +20,7 @@ export const ContactList = (props) => {
   const getContacts = useCallback(async () => {
     setIsLoading(true);
     const data = await getAllContacts();
-    // console.log(data);
+    //console.log(data);
     const contact = [];
     for (const key in data) {
       contact.push({
@@ -29,7 +29,7 @@ export const ContactList = (props) => {
         number: data[key].number,
       });
     }
-    // console.log(contact);
+   // console.log(contact);
     setContacts(contact);
     // console.log(contact);
 
@@ -87,23 +87,27 @@ export const ContactList = (props) => {
   const addContactHandler = async (name, number) => {
     console.log(name, number);
 
-    const data = {
+    const input = {
       name,
       number,
     };
-    const addedData = await AddContact(data);
-    console.log(addedData);
+    const addedData = await AddContact(input);
+    console.log("ADDED dad");
+    console.log(addedData.name);
+    input.id = addedData.name;
+    console.log(input);
+    //const data = [];
 
     setContacts((prev) => {
-      return [data, ...prev];
+      return [input, ...prev];
     });
     setOpenForm(false);
   };
 
   const removeHandler = async (id) => {
     const removedData = await removeContact(id);
-    console.log(removedData);
-    console.log(id);
+   // console.log(removedData);
+  //  console.log(id);
     setContacts((prev) => {
       return prev.filter((contact) => contact.id !== id);
     });
@@ -120,18 +124,28 @@ export const ContactList = (props) => {
     }
     // console.log(update);
     const response = await updateContact(id, update);
-    // console.log("updated");
+    console.log("updated");
     console.log(response);
+
     const updatedData = contacts.map((data) => {
-      return data.id === id ? { ...response } : data;
+      return data.id === id ? { id, ...update } : data;
     });
     setContacts(updatedData);
+
+    // const updatedData = [];
+    // for (const key in contacts) {
+    //   updateContact.push({
+    //     id: key,
+    //     name: contacts[key].name,
+    //     number: contacts[key].number,
+    //   });
     ///  console.log(response);
   };
   let content;
 
   if (contacts.length > 0 && contacts !== []) {
     content = contacts.map((data) => {
+     // console.log(data.id);
       return (
         <Contact
           key={data.id}
@@ -147,8 +161,8 @@ export const ContactList = (props) => {
 
   const validateInput = (name, number) => {
     if (
-      name.trim().length <= 1 ||
-      number.trim().length <= 7 ||
+      name.trim().length < 1 ||
+      number.trim().length < 7 ||
       name === "" ||
       number === ""
     ) {
