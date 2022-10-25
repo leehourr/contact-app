@@ -128,11 +128,11 @@ export const ContactList = (props) => {
     // console.log(response);
 
     //  const updatedData =
-    setContacts(
-      contacts.map((data) => {
+    setContacts((prev) => {
+      return prev.map((data) => {
         return data.id === id ? { id, ...update } : data;
-      })
-    );
+      });
+    });
 
     // const updatedData = [];
     // for (const key in contacts) {
