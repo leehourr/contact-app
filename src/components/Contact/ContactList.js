@@ -2,7 +2,6 @@ import React, { Fragment, useState, useEffect, useCallback } from "react";
 import { Contact } from "./Contact";
 import { NewContact } from "../Contact/NewContact";
 import { Card } from "../Ui/Card";
-import { v5 as uuidv5 } from "uuid";
 import {
   getContact,
   getAllContacts,
@@ -85,8 +84,6 @@ export const ContactList = (props) => {
     //console.log(contact);
   };
 
-  let content;
-
   const addContactHandler = async (name, number) => {
     console.log(name, number);
 
@@ -113,8 +110,8 @@ export const ContactList = (props) => {
   };
 
   const editHandler = async (id, updated) => {
-    const name = updated.name;
-    const number = updated.number;
+    const name = updated.input_name;
+    const number = updated.input_number;
     const update = { name, number };
     const isValid = validateInput(name, number);
     if (!isValid) {
@@ -123,7 +120,7 @@ export const ContactList = (props) => {
     }
     // console.log(update);
     const response = await updateContact(id, update);
-    console.log("updated");
+    // console.log("updated");
     console.log(response);
     const updatedData = contacts.map((data) => {
       return data.id === id ? { ...response } : data;
@@ -131,6 +128,7 @@ export const ContactList = (props) => {
     setContacts(updatedData);
     ///  console.log(response);
   };
+  let content;
 
   if (contacts.length > 0 && contacts !== []) {
     content = contacts.map((data) => {

@@ -2,6 +2,7 @@ import React, { Fragment, useState, useRef, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Card } from "../Ui/Card";
 import { BackDrop } from "../Ui/Backdrop";
+import { useNavigate } from "react-router-dom";
 
 export const EditContact = ({
   name,
@@ -23,9 +24,14 @@ export const EditContact = ({
 
   const editContactHandler = (e) => {
     e.preventDefault();
-    const name = inputName.current.value;
-    const number = inputNumber.current.value;
-    onEdit({ name, number });
+    const uName = inputName.current.value;
+    const uNumber = inputNumber.current.value;
+    let input_name = "";
+    let input_number = "";
+    uName !== "" ? (input_name = uName) : (input_name = name);
+    uNumber !== "" ? (input_number = uNumber) : (input_number = number);
+    console.log(input_name, input_number);
+    onEdit({ input_name, input_number });
     closeForm();
   };
 
