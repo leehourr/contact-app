@@ -32,7 +32,7 @@ export const EditContact = ({
     uNumber !== "" ? (input_number = uNumber) : (input_number = number);
     console.log(input_name, input_number);
     onEdit({ input_name, input_number });
-    closeForm();
+    onClose();
   };
 
   //   let slide_in_out = "";

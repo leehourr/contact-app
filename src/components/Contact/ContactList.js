@@ -92,10 +92,10 @@ export const ContactList = (props) => {
       number,
     };
     const addedData = await AddContact(input);
-    console.log("ADDED dad");
-    console.log(addedData.name);
+    //  console.log("ADDED dad");
+    // console.log(addedData.name);
     input.id = addedData.name;
-    console.log(input);
+    //   console.log(input);
     //const data = [];
 
     setContacts((prev) => {
@@ -127,12 +127,10 @@ export const ContactList = (props) => {
     // console.log("updated");
     // console.log(response);
 
-    //  const updatedData =
-    setContacts((prev) => {
-      return prev.map((data) => {
-        return data.id === id ? { id, ...update } : data;
-      });
+    const updatedData = contacts.map((data) => {
+      return data.id === id ? { id, ...response } : data;
     });
+    setContacts(updatedData);
 
     // const updatedData = [];
     // for (const key in contacts) {
