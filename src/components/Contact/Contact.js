@@ -31,7 +31,7 @@ export const Contact = ({ id, name, number, onDelete, onEdit }) => {
         <Card className=" text-center">
           <div className="py-5 px-1 flex flex-row ">
             <div className="text-left">
-              <h2 className="font-bold text-green-400 uppercase ">{name}</h2>
+              <h2 className="font-bold text-white-400 uppercase ">{name}</h2>
               <span>{number}</span>
             </div>
             <button
