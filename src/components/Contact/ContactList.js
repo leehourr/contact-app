@@ -179,7 +179,7 @@ export const ContactList = (props) => {
     content = <p>Loading...</p>;
   }
   return (
-    <Fragment>
+    <div>
       {/* {isInvalid && "asda"} */}
       <div className="flex flex-row space-x-14">
         <input
@@ -206,6 +206,6 @@ export const ContactList = (props) => {
       <Card className="text-white nm-flat-gray-800 max-w-lg w-full p-4 rounded-lg mt-6 ">
         <ul className="divide-y divide-slate-700">{content}</ul>
       </Card>
-    </Fragment>
+    </div>
   );
 };
