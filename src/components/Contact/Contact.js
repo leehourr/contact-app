@@ -16,11 +16,11 @@ export const Contact = ({ id, name, number, onDelete, onEdit }) => {
   };
 
   return (
-    <Fragment>
+    <div>
       {isEdit && (
         <EditContact
           onClose={closeHandler}
-          closeForm={closeHandler}
+          // closeForm={closeHandler}
           onDelete={onDelete.bind(null, id)}
           onEdit={onEdit}
           name={name}
@@ -43,6 +43,6 @@ export const Contact = ({ id, name, number, onDelete, onEdit }) => {
           </div>
         </Card>
       </li>
-    </Fragment>
+    </div>
   );
 };
