@@ -50,9 +50,9 @@ export const ContactList = (props) => {
     setSearch(input);
     //console.log(uName[0]);
     const data = await getAllContacts();
-    console.log("search");
+ //   console.log("search");
 
-    console.log(data);
+ //   console.log(data);
     const contact = [];
     for (const key in data) {
       contact.push({
@@ -61,7 +61,7 @@ export const ContactList = (props) => {
         number: data[key].number,
       });
     }
-    console.log(contact);
+  //  console.log(contact);
     setContacts(contact);
     //
     const search_contact = [];
